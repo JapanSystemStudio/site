@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Japan System Studio Hub</title>
+    
+    <style>
+        /* ここにCSSスタイルを追加 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #00bcd4, #03a9f4, #1976d2, #304ffe, #7e57c2, #4db6ac, #81c784, #aed581, #c5e1a5);
+            background-size: 1800% 1800%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        header, nav, section, footer {
+            border-radius: 20px; /* セクションの丸みを追加 */
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-radius: 20px; /* フッターの丸みを追加 */
+            margin: 0; /* フッターの余白をリセット */
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+                filter: blur(5px); /* 最初のみぼかし効果を適用 */
+            }
+            50% {
+                background-position: 100% 50%;
+                filter: none; /* 途中からぼかしを解除 */
+            }
+            100% {
+                background-position: 0% 50%;
+                filter: none; /* 最後にぼかしを解除 */
+            }
+        }
+        nav a {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 20px; /* ボタンの丸みを追加 */
+}
+
+    </style>
+</head>
+<body>
+    <header class="fadeIn">
+        <h1>ようこそ、Japan System Studio Hubへ</h1>
+    </header>
+    <nav>
+        <a href="#about" onclick="openSection('about')">会社概要</a>
+        <a href="#services" onclick="openSection('services')">サービス</a>
+        <a href="#products" onclick="openSection('products')">製品</a>
+        <a href="#portfolio" onclick="openSection('portfolio')">ポートフォリオ</a>
+        <a href="#contact" onclick="openSection('contact')">お問い合わせ</a>
+    </nav>
+    <section id="about" class="fadeIn">
+        <h2>会社概要</h2>
+        <p>Japan System Studio Hubは、テクノロジー業界において革新的な解決策を提供することを使命としています。当社はゲーム開発、ウェブ開発、モバイルアプリ開発などの分野での豊富な経験を持ち、クライアントのビジネス目標を達成するための最適なソリューションを提供しています。</p>
+        <p>私たちのチームは、常に最新の技術トレンドを追跡し、新しいアイデアを探求することに情熱を持っています。お客様のニーズに最適なソリューションを見つけるために、私たちは柔軟でクリエイティブなアプローチを採用しています。</p>
+    </section>
+    <section id="services" class="fadeIn">
+        <h2>サービス内容</h2>
+        <p>当社は以下のサービスを提供しています：</p>
+        <ul>
+            <li>ゲーム開発：独自のゲームコンセプトからゲームの制作、開発、テストまで、すべての段階をサポートします。</li>
+            <li>ウェブ開発：モダンなウェブサイトやウェブアプリケーションの開発を行い、お客様のオンラインプレゼンスを強化します。</li>
+            <li>モバイルアプリ開発：iOSおよびAndroid向けのユーザーフレンドリーなモバイルアプリケーションを開発します。</li>
+            <li>コンサルティングサービス：最新のテクノロジートレンドやビジネス戦略に関する専門知識を提供し、お客様のビジネスを支援します。</li>
+        </ul>
+    </section>
+    <section id="products" class="fadeIn">
+        <h2>製品</h2>
+        <p>当社は以下の製品を提供しています：</p>
+        <ul>
+            <li>『上司と部下の命を懸けた』</li>
+            <li>『貝塚の記憶』</li>
+            <li>ブロック崩し</li>
+        </ul>
+    </section>
+    <section id="portfolio" class="fadeIn">
+        <h2>ポートフォリオ</h2>
+        <p>当社のポートフォリオには、さまざまな業界やプラットフォームでのプロジェクトが含まれています。これらのプロジェクトの一部をご紹介します：</p>
+        <ul>
+            <li>XYZ Corp：XYZ Corp社のために開発したモバイルゲームアプリ。</li>
+            <li>ABC社：ABC社のために開発したeコマースウェブサイト。</li>
+            <li>123社：123社のために開発したクロスプラットフォームウェブアプリケーション。</li>
+        </ul>
+    </section>
+    <section id="contact" class="fadeIn">
+        <h2>お問い合わせ</h2>
+        <p>ご質問やプロジェクトについてお話ししたい場合は、お気軽にご連絡ください。</p>
+        <p>メール：未公開</p>
+        <p>電話番号：未公開</p>
+    </section>
+
+    <script>
+        // ページが読み込まれたとき、URLのアンカーに応じて適切なセクションを表示する
+        window.onload = function() {
+            var hash = window.location.hash.substring(1); // アンカーから#を除いた部分を取得
+            if (hash !== "") { // アンカーが空でない場合、対応するセクションを開く
+                openSection(hash);
+            } else { // アンカーが空の場合、デフォルトのセクションを開く
+                openSection('about');
+            }
+        };
+
+        // セクションを開く関数
+        function openSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
