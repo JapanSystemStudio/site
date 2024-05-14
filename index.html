@@ -8,68 +8,72 @@
     
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(-45deg, #7b4397, #4b6cb7);
+            background: linear-gradient(-45deg, #ff00cc, #3333ff);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #333;
+            color: #fff;
         }
         
         header {
             text-align: center;
             padding: 50px 20px;
-            background: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-        
+
         nav {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-        
+
         nav a {
             display: inline-block;
-            background-color: #333;
+            background-color: transparent;
             color: #fff;
             text-decoration: none;
             margin: 0 10px;
             padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 10px;
             transition: background-color 0.3s, color 0.3s;
         }
-        
-        nav a:hover {
-            background-color: #fff;
-            color: #333;
+
+        nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
-        
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
         section {
-            display: none;
             padding: 20px;
             margin: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
+
         section.fadeIn {
-            display: block;
             opacity: 1;
         }
-        
+
         footer {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #c0c0c0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
             text-align: center;
             padding: 20px;
             position: fixed;
@@ -78,7 +82,7 @@
             border-radius: 20px;
             margin: 0;
         }
-        
+
         @keyframes gradientBG {
             0%, 100% {
                 background-position: 0% 50%;
@@ -87,7 +91,7 @@
                 background-position: 100% 50%;
             }
         }
-        
+
         @media (max-width: 600px) {
             nav a {
                 display: block;
@@ -103,7 +107,7 @@
         }
     </style>
 </head>
-<link rel="shortcut icon" href="p - コピー.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="p - コピー.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="p.png" sizes="180x180">
 	<link rel="icon" type="image/png" href="p.png" sizes="192x192">
 <body>
@@ -128,7 +132,7 @@
         <ul>
             <li>ゲーム開発：独自のゲームコンセプトからゲームの制作、開発、テストまで、すべての段階をサポートします。</li>
             <li>ウェブ開発：モダンなウェブサイトやウェブアプリケーションの開発を行い、お客様のオンラインプレゼンスを強化します。</li>
-            <li>モバイルアプリ開発：iOSおよびAndroid向けのユーザーフレンドリーなモバイルアプリケーションを開発します。</li>
+            <li>モバイルアプリアプリ開発：iOSおよびAndroid向けのユーザーフレンドリーなモバイルアプリケーションを開発します。</li>
             <li>コンサルティングサービス：最新のテクノロジートレンドやビジネス戦略に関する専門知識を提供し、お客様のビジネスを支援します。</li>
         </ul>
     </section>
@@ -173,11 +177,20 @@
 
         function openSection(sectionId) {
             var sections = document.querySelectorAll('section');
+            var navLinks = document.querySelectorAll('nav a');
+            
             sections.forEach(function(section) {
                 section.style.display = 'none';
                 section.classList.remove('fadeIn');
             });
+
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
             var activeSection = document.getElementById(sectionId);
+            var activeLink = document.querySelector('nav a[href="#' + sectionId + '"]');
+
             if (activeSection) {
                 activeSection.style.display = 'block';
                 setTimeout(function() {
@@ -187,6 +200,10 @@
                     top: activeSection.offsetTop - document.querySelector('nav').offsetHeight,
                     behavior: 'smooth'
                 });
+            }
+
+            if (activeLink) {
+                activeLink.classList.add('active');
             }
         }
     </script>
